@@ -1,10 +1,11 @@
 package com.sha.serverproductmanagement.service;
 
-import com.sha.serverproductmanagement.model.User;
 import com.sha.serverproductmanagement.repository.UserRepository;
+import jdk.javadoc.internal.doclets.toolkit.taglets.UserTaglet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,12 +21,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).orElse(null);
-        if(user == null){
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+    com.sha.serverproductmanagement.model.User user = userRepository.findByUsername(username).orElse(null);        if(user==null){
             throw new UsernameNotFoundException(username);
         }
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        Set<GrantedAuthority> grantedAuthorities= new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().name()));
 
         return new org.springframework.security.core.userdetails.User(
