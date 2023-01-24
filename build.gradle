@@ -33,6 +33,14 @@ dependencies {
 
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
+	implementation 'org.springframework.security:spring-security-web:4.1.1.RELEASE'
+
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
+	implementation 'org.springframework.security:spring-security-config:4.1.1.RELEASE'
+
+
 	implementation 'org.liquibase:liquibase-core'
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
@@ -40,6 +48,7 @@ dependencies {
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
